@@ -5,8 +5,7 @@ var expressWs = expressWs(express());
 var app = expressWs.app;
 app.use(express.static('public'));
 var aWss = expressWs.getWss('/');
-// // homepage
-
+// homepage
 const port = process.env.PORT || 3001
 
 app.get('/', (req, res) => {
@@ -23,4 +22,5 @@ app.ws('/totem', function(ws, req) {
     });
   };
 });
-app.listen(port);
+
+app.listen(3001);
