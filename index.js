@@ -23,4 +23,4 @@ app.ws('/totem', function(ws, req) {
   };
 });
 
-app.listen(3001);
+app.listen(port);
