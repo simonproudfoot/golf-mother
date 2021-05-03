@@ -7,6 +7,8 @@ app.use(express.static('public'));
 var aWss = expressWs.getWss('/');
 // // homepage
 
+const port = process.env.PORT || 3001
+
 app.get('/', (req, res) => {
   console.error('express connection');
   res.sendFile(path.join(__dirname, 'ws.html'));
@@ -21,4 +23,4 @@ app.ws('/totem', function(ws, req) {
     });
   };
 });
-app.listen(3001);
+app.listen(port);
