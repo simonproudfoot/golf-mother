@@ -3,7 +3,7 @@ var expressWs = require('express-ws');
 var expressWs = expressWs(express());
 var app = expressWs.app;
 app.use(express.static('public'));
-var aWss = expressWs.getWss('/');
+var aWss = expressWs.getWss('/totem');
 // homepage
 const port = process.env.PORT || 3001
 
@@ -45,6 +45,10 @@ app.ws('/totem', (ws, req) => {
   console.log('New totem online');
   //console.log('Listening on:'+req.ip+':'+port)
   m = defaultMinute
+
+  aWss.clients.forEach(function (client) {
+    client.send(defaultMinute);
+  });
 
   // LISTEN FOR MESSAGE
   ws.onmessage = (msg) => {
