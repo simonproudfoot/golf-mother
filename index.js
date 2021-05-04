@@ -42,7 +42,7 @@ app.get('/', (req, res) => {
 app.ws('/totem', (ws, req) => {
 
   // restart timer when new totem connects
-  console.log('New totem connected');
+  console.log('New totem online');
   //console.log('Listening on:'+req.ip+':'+port)
   m = defaultMinute
 
