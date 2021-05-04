@@ -1,4 +1,3 @@
-const ip = require('request-ip');
 var express = require('express');
 var expressWs = require('express-ws');
 var expressWs = expressWs(express());
