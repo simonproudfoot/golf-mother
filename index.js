@@ -5,8 +5,8 @@ var app = expressWs.app;
 const port = process.env.PORT || 3001
 app.use(express.static('public'));
 var aWss = expressWs.getWss('/');
-const defaultMinute = 2
-const speed = 60000 // change this to speed up for testing: 60000 = 1 min
+const defaultMinute = 100
+const speed = 1000 // change this to speed up for testing: 60000 = 1 min
 var m = defaultMinute
 var timer = false
 
