@@ -42,6 +42,10 @@ app.ws('/', function (ws, req) {
     console.log('Disconnected!');
   };
 
+  connection.onerror = error => {
+    console.log(`WebSocket error: ${error}`)
+  }
+
 
   ws.route = '/';  /* <- Your path */
   ws.onmessage = function (msg) {
@@ -62,11 +66,11 @@ app.ws('/', function (ws, req) {
     // STOP
     if (msg.data == 'stop') {
       console.log('stopping')
-      counting = false
+  
       //  clearInterval(countdown)
     }
     if (msg.data == 'start') {
-      counting = false
+
       console.log('reseting')
       m = defaultMinute
       Array.from(
@@ -76,8 +80,9 @@ app.ws('/', function (ws, req) {
       }).forEach(function (client) {
         client.send(defaultMinute);
       });
+
       countdown()
-      counting = true
+
     }
   }
 })
