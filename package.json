@@ -8,16 +8,15 @@
     "start": "node index.js",
     "heroku-prebuild": "npm install"
   },
-
   "engines": {
     "node": "12.16.2"
   },
-  
   "author": "",
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
     "express-ws": "^4.0.0",
-    "ip": "^1.1.5"
+    "ip": "^1.1.5",
+    "request-ip": "^2.1.3"
   }
 }
