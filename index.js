@@ -14,10 +14,14 @@ function countdown() {
   function run() {
     timer = setInterval(() => {
       if (m > -1) {
-        aWss.clients.forEach(function (client) {
-          client.send(m);
+        Array.from(
+          aWss.clients
+        ).filter((sock) => {
+          return sock.route == '/' /* <- Your path */
+        }).forEach(function (client) {
+          client.send(m--);
         });
-        console.log(m--)
+        console.log(m)
       }
     }, speed);
   }
@@ -32,9 +36,9 @@ function countdown() {
 app.ws('/', function (ws, req) {
   console.log('Socket Connected');
 
-  ws.onclose = function(e) {
+  ws.onclose = function (e) {
     console.log('Disconnected!');
-};
+  };
 
 
   ws.route = '/';  /* <- Your path */
