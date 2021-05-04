@@ -42,37 +42,15 @@ app.ws('/', function (ws, req) {
     console.log('Disconnected!');
   };
 
-  connection.onerror = error => {
-    console.log(`WebSocket error: ${error}`)
-  }
-
 
   ws.route = '/';  /* <- Your path */
   ws.onmessage = function (msg) {
     console.log(msg.data);
     // START 
-    // if (msg.data == 'start') {
-    //   console.log('starting')
-    //   m = defaultMinute
-    //   countdown()
-    //   Array.from(
-    //     aWss.clients
-    //   ).filter((sock) => {
-    //     return sock.route == '/' /* <- Your path */
-    //   }).forEach(function (client) {
-    //     client.send(defaultMinute);
-    //   });
-    // };
-    // STOP
-    if (msg.data == 'stop') {
-      console.log('stopping')
-  
-      //  clearInterval(countdown)
-    }
     if (msg.data == 'start') {
-
-      console.log('reseting')
+      console.log('starting(again)')
       m = defaultMinute
+      countdown()
       Array.from(
         aWss.clients
       ).filter((sock) => {
@@ -80,10 +58,26 @@ app.ws('/', function (ws, req) {
       }).forEach(function (client) {
         client.send(defaultMinute);
       });
-
-      countdown()
-
+    };
+    // STOP
+    if (msg.data == 'stop') {
+      console.log('stopping')
+      counting = false
+      //  clearInterval(countdown)
     }
+    // if (msg.data == 'resetTimer') {
+    //   counting = false
+    //   console.log('reseting')
+    //   m = defaultMinute
+    //   Array.from(
+    //     aWss.clients
+    //   ).filter((sock) => {
+    //     return sock.route == '/' /* <- Your path */
+    //   }).forEach(function (client) {
+    //     client.send(defaultMinute);
+    //   });
+    //   counting = true
+    // }
   }
 })
 app.listen(port);
