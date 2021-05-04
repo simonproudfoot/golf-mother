@@ -22,6 +22,8 @@ function countdown() {
           client.send(m--);
         });
         console.log(m)
+      }else{
+        clearInterval(timer)
       }
     }, speed);
   }
