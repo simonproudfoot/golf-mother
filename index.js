@@ -76,6 +76,7 @@ app.ws('/', function (ws, req) {
       }).forEach(function (client) {
         client.send(defaultMinute);
       });
+      countdown()
       counting = true
     }
   }
