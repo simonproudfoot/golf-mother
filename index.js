@@ -13,7 +13,7 @@ var timer = false
 function countdown() {
   function run() {
     timer = setInterval(() => {
-      if (m > -1) {
+      if (m >= 0) {
         Array.from(
           aWss.clients
         ).filter((sock) => {
