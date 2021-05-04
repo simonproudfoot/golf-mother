@@ -47,25 +47,25 @@ app.ws('/', function (ws, req) {
   ws.onmessage = function (msg) {
     console.log(msg.data);
     // START 
-    if (msg.data == 'start') {
-      console.log('starting')
-      m = defaultMinute
-      countdown()
-      Array.from(
-        aWss.clients
-      ).filter((sock) => {
-        return sock.route == '/' /* <- Your path */
-      }).forEach(function (client) {
-        client.send(defaultMinute);
-      });
-    };
+    // if (msg.data == 'start') {
+    //   console.log('starting')
+    //   m = defaultMinute
+    //   countdown()
+    //   Array.from(
+    //     aWss.clients
+    //   ).filter((sock) => {
+    //     return sock.route == '/' /* <- Your path */
+    //   }).forEach(function (client) {
+    //     client.send(defaultMinute);
+    //   });
+    // };
     // STOP
     if (msg.data == 'stop') {
       console.log('stopping')
       counting = false
       //  clearInterval(countdown)
     }
-    if (msg.data == 'resetTimer') {
+    if (msg.data == 'start') {
       counting = false
       console.log('reseting')
       m = defaultMinute
