@@ -31,6 +31,12 @@ function countdown() {
 
 app.ws('/', function (ws, req) {
   console.log('Socket Connected');
+
+  ws.onclose = function(e) {
+    console.log('Disconnected!');
+};
+
+
   ws.route = '/';  /* <- Your path */
   ws.onmessage = function (msg) {
     console.log(msg.data);
