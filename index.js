@@ -23,6 +23,13 @@ function countdown() {
         });
         console.log(m)
       }else{
+        Array.from(
+          aWss.clients
+        ).filter((sock) => {
+          return sock.route == '/' /* <- Your path */
+        }).forEach(function (client) {
+          client.send('reset');
+        });
         clearInterval(timer)
       }
     }, speed);
